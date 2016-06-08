@@ -1,21 +1,28 @@
 {
-  "name": "dom-event",
-  "version": "0.0.3",
+  "name": "on-off",
+  "version": "1.0.0",
   "description": "Add/remove DOM events",
-  "main": "index.js",
   "scripts": {
-    "test": "node test -b -l phantom -q"
+    "test": "browserify test.js | tape-run"
   },
   "devDependencies": {
-    "prova": "*"
+    "browserify": "13.0.0",
+    "tape": "4.5.1",
+    "tape-run": "2.1.3"
   },
   "keywords": [
     "dom",
     "event",
+    "events",
+    "add",
+    "on",
+    "off",
+    "addeventlistener",
+    "removeeventlistener",
     "binding"
   ],
   "repository": {
-    "url": "git@github.com:npm-dom/dom-event.git",
+    "url": "git@github.com:bfred-it/on-off.git",
     "type": "git"
   },
   "author": "Azer Koçulu <azer@kodfabrik.com>",
