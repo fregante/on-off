@@ -9,10 +9,7 @@ test('binds and unbinds a new event', function(t){
   t.plan(1);
 
   on(button, 'click', callback);
-
-  setTimeout(function(){
-    button.click();
-  }, 100);
+  button.click();
 
   function callback () {
     off(button, 'click', callback);
@@ -21,8 +18,6 @@ test('binds and unbinds a new event', function(t){
   }
 });
 
-reset();
-
 test('binds and unbinds a new event on multiple elements', function(t){
   document.body.innerHTML = '<button>Click Me</button><button>Click Me</button>';
   var buttons = document.querySelectorAll('button');
@@ -30,19 +25,39 @@ test('binds and unbinds a new event on multiple elements', function(t){
   t.plan(buttons.length);
 
   on(buttons, 'click', callback);
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].click();
+  }
 
   setTimeout(function(){
+    off(buttons, 'click', callback);
     for (var i = 0; i < buttons.length; i++) {
       buttons[i].click();
     }
-  }, 100);
+  }, 300);
 
   function callback () {
-    off(this, 'click', callback);
-    this.click();
     t.ok(true);
   }
 });
 
-function reset () {
-}
+test('binds multiple events', function(t){
+  document.body.innerHTML = '<button>Click Me</button>';
+  var button = document.querySelector('button');
+
+  t.plan(2);
+
+  on(button, 'click touchstart', callback);
+  button.dispatchEvent(new Event('click'));
+  button.dispatchEvent(new Event('touchstart'));
+
+  setTimeout(function(){
+    off(button, 'click touchstart', callback);
+    button.dispatchEvent(new Event('click'));
+    button.dispatchEvent(new Event('touchstart'));
+  }, 300);
+
+  function callback () {
+    t.ok(true);
+  }
+});

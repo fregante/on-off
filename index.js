@@ -22,16 +22,24 @@ function getElementsArray(elements) {
 	return Array.prototype.slice.call(elements);
 }
 
-function on(elements, type, listener, useCapture) {
+function on(elements, types, listener, useCapture) {
+	types = types.split(' ');
 	elements = getElementsArray(elements);
-	for (var i = 0, l = elements.length; i < l; i++) {
-		elements[i].addEventListener(type, listener, useCapture);
+	var i, l, m, n;
+	for (i = 0, l = elements.length; i < l; i++) {
+		for (m = 0, n = types.length; m < n; m++) {
+			elements[i].addEventListener(types[m], listener, useCapture);
+		}
 	}
 }
 
-function off(elements, type, listener, useCapture) {
+function off(elements, types, listener, useCapture) {
+	types = types.split(' ');
 	elements = getElementsArray(elements);
-	for (var i = 0, l = elements.length; i < l; i++) {
-		elements[i].removeEventListener(type, listener, useCapture);
+	var i, l, m, n;
+	for (i = 0, l = elements.length; i < l; i++) {
+		for (m = 0, n = types.length; m < n; m++) {
+			elements[i].removeEventListener(types[m], listener, useCapture);
+		}
 	}
 }
