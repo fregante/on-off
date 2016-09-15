@@ -3,6 +3,9 @@ module.exports.on = on;
 module.exports.off = off;
 
 function getElementsArray(elements) {
+	if (typeof elements === 'string') {
+		elements = document.querySelectorAll(elements);
+	}
 	if (!elements) {
 		return [];
 	}
