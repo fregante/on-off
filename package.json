@@ -1,6 +1,6 @@
 {
   "name": "on-off",
-  "version": "1.0.1",
+  "version": "3.0.0",
   "description": "Add/remove DOM events",
   "scripts": {
     "test": "browserify test.js | tape-run"
