@@ -2,29 +2,23 @@ module.exports = on;
 module.exports.on = on;
 module.exports.off = off;
 
-function getElementsArray(elements) {
+function getElementsList(elements) {
 	if (typeof elements === 'string') {
 		elements = document.querySelectorAll(elements);
 	}
 	if (!elements) {
 		return [];
 	}
-	// some elements are array-like (<form> has a .length) so they need to be stopped here
-	if (elements instanceof HTMLElement || elements === document) {
+	// if elements is actually just one element or window or document
+	if (typeof elements.addEventListener === 'function') {
 		return [elements];
 	}
-	if (Array.isArray(elements)) {
-		return elements;
-	}
-	if (Array.from) {
-		return Array.from(elements);
-	}
-	return Array.prototype.slice.call(elements);
+	return elements;
 }
 
 function on(elements, types, listener, useCapture) {
 	types = types.split(' ');
-	elements = getElementsArray(elements);
+	elements = getElementsList(elements);
 	var i, l, m, n;
 	for (i = 0, l = elements.length; i < l; i++) {
 		for (m = 0, n = types.length; m < n; m++) {
@@ -35,7 +29,7 @@ function on(elements, types, listener, useCapture) {
 
 function off(elements, types, listener, useCapture) {
 	types = types.split(' ');
-	elements = getElementsArray(elements);
+	elements = getElementsList(elements);
 	var i, l, m, n;
 	for (i = 0, l = elements.length; i < l; i++) {
 		for (m = 0, n = types.length; m < n; m++) {
