@@ -1,9 +1,6 @@
 function getElementsList(elements) {
-	if (!elements) {
-		return [];
-	}
 	if (typeof elements === 'string') {
-		elements = document.querySelectorAll(elements);
+		return document.querySelectorAll(elements);
 	}
 	// if `elements` supports events directly (one element, document, window)
 	if (typeof elements.addEventListener === 'function') {
@@ -13,6 +10,9 @@ function getElementsList(elements) {
 }
 
 function run(action, elements, types, listener, useCapture) {
+	if (!elements) {
+		return;
+	}
 	if (typeof types === 'string') {
 		types = types.split(' ').filter();
 	}
