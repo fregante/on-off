@@ -25,5 +25,5 @@ function run(action, elements, types, listener, useCapture) {
 	}
 }
 
-module.exports.on = run.bind(null, 'addEventListener');
-module.exports.off = off.bind(null, 'removeEventListener');
+exports.on = run.bind(null, 'addEventListener');
+exports.off = run.bind(null, 'removeEventListener');
