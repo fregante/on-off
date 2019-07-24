@@ -28,7 +28,7 @@ function hello () {
 
 ## Related
 
-* [bfred-it/select-dom](https://github.com/bfred-it/select-dom) Slim alternative to `document.querySelector/All`
+* [fregante/select-dom](https://github.com/fregante/select-dom) Slim alternative to `document.querySelector/All`
 
 ## Changelog
 
@@ -39,4 +39,4 @@ function hello () {
 
 ## License
 
-BSD, originally developed by [Azer Koçulu](http://azer.bike/), maintained by [Federico Brigante](https://twitter.com/bfred_it) after v1
+BSD, originally developed by [Azer Koçulu](http://azer.bike/), maintained by [Federico Brigante](https://bfred.it) after v1
