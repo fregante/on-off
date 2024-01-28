@@ -5,7 +5,7 @@ Add/remove DOM events
 ## Install
 
 ```bash
-$ npm install on-off --save
+npm install on-off
 ```
 
 ## Usage
@@ -39,4 +39,4 @@ function hello () {
 
 ## License
 
-BSD, originally developed by [Azer Koçulu](http://azer.bike/), maintained by [Federico Brigante](https://bfred.it) after v1
+BSD, originally developed by [Azer Koçulu](http://azer.bike/), maintained by [Federico Brigante](https://fregante.com) after v1
